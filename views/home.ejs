@@ -1,0 +1,18 @@
+<%- include('./partials/header'); -%>
+    <h1>Home</h1>
+    <p>
+        <%=homeStartingContent%>
+    </p>
+
+    <div>
+        <% posts.forEach((el)=>{ %>
+            <h2>
+                <%= el.postTitle %>
+            </h2>
+            <p>
+                <%= el.truncContent %>
+                    <a href="/posts/<%=el.postSlug %>">Read more</a>
+            </p>
+            <% }) %>
+    </div>
+    <%- include('./partials/footer'); -%>
