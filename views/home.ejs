@@ -7,11 +7,11 @@
     <div>
         <% posts.forEach((el)=>{ %>
             <h2>
-                <%= el.postTitle %>
+                <%= el.title %>
             </h2>
             <p>
-                <%= el.truncContent %>
-                    <a href="/posts/<%=el.postSlug %>">Read more</a>
+                <%= el.shortContent %>
+                    <a href="/posts/<%=el.slug %>">Read more</a>
             </p>
             <% }) %>
     </div>

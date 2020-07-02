@@ -1,18 +1,20 @@
 {
-    "name": "ejs-challenge",
+    "name": "blog-project",
     "version": "1.0.0",
-    "description": "",
-    "main": "app.js",
+    "description": "Blog website",
+    "main": "server.js",
     "scripts": {
-        "start": "nodemon app.js"
+        "start": "nodemon server.js"
     },
     "author": "Asylcreek",
     "license": "ISC",
     "dependencies": {
         "body-parser": "^1.18.3",
+        "dotenv": "^8.2.0",
         "ejs": "^2.6.1",
         "express": "^4.16.3",
         "lodash": "^4.17.11",
+        "mongoose": "^5.9.21",
         "slugify": "^1.4.0"
     }
 }
