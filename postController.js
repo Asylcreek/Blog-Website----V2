@@ -4,11 +4,15 @@ const _ = require('lodash');
 const Post = require('./postModel');
 
 exports.getAllPosts = async(req, res) => {
-    const posts = await Post.find();
-    res.render('home', {
-        homeStartingContent: content.homeStartingContent,
-        posts,
-    });
+    try {
+        const posts = await Post.find();
+        res.render('home', {
+            homeStartingContent: content.homeStartingContent,
+            posts,
+        });
+    } catch (err) {
+        console.log(err);
+    }
 };
 
 exports.about = (req, res) => {
@@ -24,22 +28,30 @@ exports.compose = (req, res) => {
 };
 
 exports.createPost = async(req, res) => {
-    const postTitle = req.body.postTitle;
-    const postContent = req.body.postContent;
+    try {
+        const postTitle = req.body.postTitle;
+        const postContent = req.body.postContent;
 
-    const newPost = await Post.create({ title: postTitle, content: postContent });
+        await Post.create({ title: postTitle, content: postContent });
 
-    res.redirect('/');
+        res.redirect('/');
+    } catch (err) {
+        console.log(err);
+    }
 };
 
 exports.getPost = async(req, res) => {
-    //Get slug from request parameters
-    let slug = req.params.slug;
+    try {
+        //Get slug from request parameters
+        let slug = req.params.slug;
 
-    //Convert slug to lower case and remove all special characters
-    slug = slugify(_.lowerCase(slug));
+        //Convert slug to lower case and remove all special characters
+        slug = slugify(_.lowerCase(slug));
 
-    const post = await Post.findOne({ slug });
+        const post = await Post.findOne({ slug });
 
-    res.render('post', { post });
+        res.render('post', { post });
+    } catch (err) {
+        console.log(err);
+    }
 };
